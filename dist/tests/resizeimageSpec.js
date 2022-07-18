@@ -15,5 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
 const resizeimage_1 = __importDefault(require("../modules/resizeimage"));
 it('should return new image path', () => __awaiter(void 0, void 0, void 0, function* () {
-    expect((0, resizeimage_1.default)(`fjord`, 400, 400)).toEqual(`${path_1.default.resolve()}\\images\\thumb\\fjord_400_400.jpg`);
+    const resizedimage = yield (0, resizeimage_1.default)(`fjord`, 400, 400);
+    expect(resizedimage).toEqual(`${path_1.default.resolve()}\\images\\thumb\\fjord_400_400.jpg`);
 }));

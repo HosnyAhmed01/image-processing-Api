@@ -15,7 +15,7 @@ app.listen(port, () => {
 function riszedImage(
     req: express.Request,
     res: express.Response
-) {
+): void {
     const imageInfo = url.parse(req.url, true).query;
     const existedimgae = fs.existsSync(
         `${path.resolve()}\\images\\thumb\\${imageInfo.imageName}_${
@@ -45,7 +45,7 @@ function riszedImage(
             if (valid == true) {
                 try {
                     // resize and save resized image
-                    const image = resizeImage(
+                    const image = await resizeImage(
                         String(imageName),
                         Number(width),
                         Number(height)
@@ -54,7 +54,7 @@ function riszedImage(
                     if (image != 'false') {
                         setTimeout(() => {
                             res.sendFile(String(image));
-                        }, 400);
+                        }, 600);
                     } else {
                         // if the image is not found
                         res.send('sorry image not found');

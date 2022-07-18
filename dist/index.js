@@ -43,12 +43,12 @@ function riszedImage(req, res) {
                 if (valid == true) {
                     try {
                         // resize and save resized image
-                        const image = (0, resizeimage_1.default)(String(imageName), Number(width), Number(height));
+                        const image = yield (0, resizeimage_1.default)(String(imageName), Number(width), Number(height));
                         // check if the image is exist
                         if (image != 'false') {
                             setTimeout(() => {
                                 res.sendFile(String(image));
-                            }, 400);
+                            }, 600);
                         }
                         else {
                             // if the image is not found
